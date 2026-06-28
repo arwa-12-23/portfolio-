@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arwa Gamal – Social Media Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #12111a;
+    --surface: #1a1825;
+    --surface2: #201e2e;
+    --border: #2e2c40;
+    --accent: #9d7fe8;
+    --accent2: #d4bfff;
+    --text: #e8e4f5;
+    --muted: #8a869e;
+    --white: #f5f2ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(13,13,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(176,143,255,0.12) 0%, transparent 70%);
+    top: -100px; right: -150px;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 48px;
+    letter-spacing: 0.02em;
+  }
+  .hero-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+  .contact-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.25s;
+    background: var(--surface);
+  }
+  .contact-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(176,143,255,0.07);
+  }
+  .contact-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .hero-scroll {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--white);
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-text {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .about-text strong { color: var(--text); font-weight: 500; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .stat-growth {
+    font-size: 0.72rem;
+    color: #7fff9a;
+    margin-top: 4px;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--surface); max-width: 100%; padding: 100px 48px; }
+  #skills .inner { max-width: 1200px; margin: 0 auto; }
+  .skills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .skill-tag {
+    padding: 10px 22px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: var(--text);
+    background: var(--surface2);
+    transition: all 0.25s;
+    cursor: default;
+  }
+  .skill-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(176,143,255,0.08);
+  }
+  .skill-tag.highlight {
+    border-color: rgba(176,143,255,0.4);
+    background: rgba(176,143,255,0.1);
+    color: var(--accent2);
+  }
+
+  /* EXPERIENCE */
+  .exp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 40px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .exp-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.3;
+  }
+  .exp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .exp-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--white);
+  }
+  .exp-role {
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+  .exp-badge {
+    padding: 6px 16px;
+    border: 1px solid rgba(176,143,255,0.3);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    color: var(--accent);
+    background: rgba(176,143,255,0.07);
+  }
+  .exp-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 40px;
+  }
+  .exp-list li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+  .exp-list li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* RESULTS */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .result-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .result-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(176,143,255,0.4);
+  }
+  .result-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+  .result-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .result-growth {
+    font-size: 0.8rem;
+    color: #7fff9a;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .result-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .results-note {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 20px 24px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* SAMPLES */
+  .samples-intro {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 40px;
+    max-width: 600px;
+    line-height: 1.8;
+  }
+  .samples-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.25s;
+    letter-spacing: 0.05em;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(176,143,255,0.08);
+  }
+  .sample-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .sample-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .sample-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(176,143,255,0.35);
+  }
+  .sample-visual {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sample-visual.dark-bg {
+    background: #0a0a0c;
+    color: var(--text);
+  }
+  .sample-visual.pink-bg {
+    background: #f9e8f0;
+    color: #2a1a2e;
+  }
+  .sample-visual.zoom-bg {
+    background: linear-gradient(135deg, #1a1040 0%, #2d1b6e 100%);
+    color: var(--text);
+  }
+  .sample-visual.lunara-bg {
+    background: #fdf6f0;
+    color: #3d1a2e;
+  }
+  .sample-visual.green-bg {
+    background: linear-gradient(135deg, #0d2018, #1a4030);
+    color: #d4ffea;
+  }
+  .sample-visual.edu-bg {
+    background: linear-gradient(135deg, #0d0d2e, #1a1a4a);
+    color: #e0e0ff;
+  }
+  .caption-preview {
+    font-size: 0.78rem;
+    line-height: 1.65;
+    text-align: right;
+    direction: rtl;
+    font-family: 'Inter', sans-serif;
+  }
+  .caption-handle {
+    font-weight: 600;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 6px;
+    color: inherit;
+    opacity: 0.7;
+  }
+  .caption-hashtags {
+    margin-top: 6px;
+    opacity: 0.55;
+    font-size: 0.68rem;
+  }
+  .sample-info {
+    padding: 18px 20px;
+    border-top: 1px solid var(--border);
+  }
+  .sample-brand {
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .sample-type {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .sample-platform {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* REEL IDEAS */
+  .reel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .reel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+  .reel-card:hover { border-color: rgba(176,143,255,0.35); }
+  .reel-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: rgba(176,143,255,0.2);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 32px;
+  }
+  .reel-hook {
+    font-size: 0.88rem;
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .reel-body {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .reel-cta {
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: var(--accent);
+    padding: 4px 12px;
+    border: 1px solid rgba(176,143,255,0.3);
+    border-radius: 100px;
+    display: inline-block;
+  }
+
+  /* CONTENT PLAN */
+  .plan-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .plan-table th {
+    text-align: left;
+    padding: 14px 20px;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .plan-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .plan-table tr:last-child td { border-bottom: none; }
+  .plan-table tr:hover td { background: rgba(176,143,255,0.04); }
+  .day-cell { color: var(--muted); font-size: 0.8rem; }
+  .type-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .type-reel { background: rgba(176,143,255,0.15); color: var(--accent); }
+  .type-carousel { background: rgba(255,200,100,0.12); color: #ffc864; }
+  .type-story { background: rgba(100,200,255,0.12); color: #64c8ff; }
+  .type-offer { background: rgba(255,120,120,0.12); color: #ff7878; }
+  .type-edu { background: rgba(100,255,150,0.12); color: #64ff96; }
+  .type-bts { background: rgba(200,150,255,0.12); color: #c896ff; }
+  .type-eng { background: rgba(255,180,80,0.12); color: #ffb450; }
+  .plan-goal {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* TOOLS */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .tool-card:hover {
+    border-color: rgba(176,143,255,0.35);
+    transform: translateY(-2px);
+  }
+  .tool-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .tool-name { font-size: 0.92rem; color: var(--text); font-weight: 500; }
+  .tool-use { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
+
+  /* FOOTER / CTA */
+  #contact {
+    background: var(--surface);
+    max-width: 100%;
+    padding: 120px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #contact .inner { max-width: 700px; margin: 0 auto; }
+  #contact::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(176,143,255,0.1) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+  .cta-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .cta-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+  .cta-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.25s;
+  }
+  .cta-btn.primary {
+    background: var(--accent);
+    color: #0d0d0f;
+    font-weight: 600;
+  }
+  .cta-btn.primary:hover { background: var(--accent2); transform: translateY(-2px); }
+  .cta-btn.secondary {
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+  }
+  .cta-btn.secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  footer {
+    padding: 28px 48px;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* Glowy divider */
+  .glow-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(176,143,255,0.4), transparent);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    #hero, section, #skills, #contact { padding: 80px 20px; }
+    .about-grid, .results-grid, .sample-grid,
+    .reel-grid, .tools-grid { grid-template-columns: 1fr; }
+    .exp-list { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AG.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#results">Results</a>
+    <a href="#samples">Samples</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:100%; padding-top:120px;">
+  <div class="hero-glow"></div>
+  <p class="hero-eyebrow">Portfolio — 2025</p>
+  <h1 class="hero-name">Arwa<br>Gamal.</h1>
+  <p class="hero-title">Social Media Specialist &nbsp;·&nbsp; Content Creator &nbsp;·&nbsp; Copywriter</p>
+  <div class="hero-contacts">
+    <a href="mailto:darwa0646@gmail.com" class="contact-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      darwa0646@gmail.com
+    </a>
+    <a href="tel:01274037312" class="contact-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      01274037312
+    </a>
+    <a href="https://www.linkedin.com/in/arwa-gamal" target="_blank" class="contact-pill">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About Me</p>
+  <h2 class="section-title">Content that connects,<br>copy that converts.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a Social Media Specialist with hands-on experience managing accounts, crafting content strategies, and writing copy that feels <strong>human</strong> — not template-generated.</p>
+      <br>
+      <p>From high-energy Reels to educational carousels, I create content tailored to each platform and each audience. I've worked across multiple industries including marketing agencies, skincare, and B2B brands — always with one goal: <strong>real engagement, real growth.</strong></p>
+      <br>
+      <p>I believe good content isn't just about looking nice. It's about saying the right thing, to the right person, at the right moment.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">3.6K</div>
+        <div class="stat-label">Views in one month</div>
+        <div class="stat-growth">↑ 190% growth</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2.7K</div>
+        <div class="stat-label">Non-follower reach</div>
+        <div class="stat-growth">↑ 161% accounts reached</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">82.5%</div>
+        <div class="stat-label">Views from Reels</div>
+        <div class="stat-growth">Top-performing format</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">+410%</div>
+        <div class="stat-label">Profile activity surge</div>
+        <div class="stat-growth">vs. previous period</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<div id="skills">
+<div class="inner">
+  <p class="section-label">What I Do</p>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-wrap">
+    <span class="skill-tag highlight">Social Media Management</span>
+    <span class="skill-tag highlight">Content Creation</span>
+    <span class="skill-tag highlight">Copywriting (AR & EN)</span>
+    <span class="skill-tag highlight">Reels & Short-form Video</span>
+    <span class="skill-tag">Content Planning</span>
+    <span class="skill-tag">Community Management</span>
+    <span class="skill-tag">Trend Research</span>
+    <span class="skill-tag">Analytics & Reporting</span>
+    <span class="skill-tag">Canva</span>
+    <span class="skill-tag">CapCut</span>
+    <span class="skill-tag">Meta Business Suite</span>
+    <span class="skill-tag">Egyptian Arabic Copy</span>
+    <span class="skill-tag">Brand Voice</span>
+    <span class="skill-tag">Audience Targeting</span>
+    <span class="skill-tag">Viral Hook Writing</span>
+  </div>
+</div>
+</div>
+
+<div class="glow-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Experience</p>
+  <h2 class="section-title">Where I've worked.</h2>
+
+  <div class="exp-card">
+    <div class="exp-top">
+      <div>
+        <div class="exp-company">Zoom In Development</div>
+        <div class="exp-role">Social Media Specialist</div>
+      </div>
+      <span class="exp-badge">Current</span>
+    </div>
+    <ul class="exp-list">
+      <li>Managed multi-platform social media accounts (IG, FB, TikTok, X)</li>
+      <li>Created daily content: captions, Reels, carousels, and stories</li>
+      <li>Planned & executed monthly content calendars</li>
+      <li>Wrote engaging Egyptian Arabic copy tied to trending moments</li>
+      <li>Edited and conceptualized short-form video content</li>
+      <li>Tracked analytics and adapted strategy based on performance</li>
+      <li>Turned brand events into viral-ready Reel concepts</li>
+      <li>Maintained consistent brand identity across all platforms</li>
+    </ul>
+  </div>
+
+  <div class="exp-card">
+    <div class="exp-top">
+      <div>
+        <div class="exp-company">Lunara Skin Care</div>
+        <div class="exp-role">Social Media Content Creator — Personal Project</div>
+      </div>
+      <span class="exp-badge">@lun_araskin</span>
+    </div>
+    <ul class="exp-list">
+      <li>Built a skincare Instagram page from scratch in Arabic</li>
+      <li>Created educational carousels, Reels, and caption copy</li>
+      <li>Developed brand voice: warm, informative, relatable</li>
+      <li>Wrote hook-driven copy in Egyptian Arabic for maximum saves/shares</li>
+      <li>Grew reach organically — 56.1% from non-followers</li>
+      <li>Achieved 82.5% of views via Reels format</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESULTS -->
+<section id="results">
+  <p class="section-label">Proven Impact</p>
+  <h2 class="section-title">Real numbers. Real growth.</h2>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-number">3.6K</div>
+      <div class="result-growth">↑ 190%</div>
+      <div class="result-desc">Total views in one month across managed accounts</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">969</div>
+      <div class="result-growth">↑ 161.2%</div>
+      <div class="result-desc">Accounts reached — majority from outside existing followers</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">646</div>
+      <div class="result-growth">Top Reel</div>
+      <div class="result-desc">Views on single best-performing Reel in June 2025</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">82.5%</div>
+      <div class="result-growth">Reels dominance</div>
+      <div class="result-desc">Of all views came from Reel content — proving format expertise</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">+410%</div>
+      <div class="result-growth">Profile activity</div>
+      <div class="result-desc">Surge in profile visits vs. prior period</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">+150%</div>
+      <div class="result-growth">External link taps</div>
+      <div class="result-desc">Increase in clicks to external links, driving off-platform traffic</div>
+    </div>
+  </div>
+  <div class="results-note">
+    📊 All metrics sourced from Instagram Professional Dashboard and Meta Insights — data period: May–June 2025.
+    The accounts reached breakdown shows <strong>73.7% non-follower reach</strong>, demonstrating strong organic discovery performance.
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- CONTENT SAMPLES -->
+<section id="samples">
+  <p class="section-label">Portfolio</p>
+  <h2 class="section-title">Content Samples</h2>
+  <p class="samples-intro">Real captions I wrote for Zoom In Development (Instagram & Facebook) and Lunara Skin Care — across multiple formats and tones.</p>
+
+  <!-- ZOOM IN SUBSECTION -->
+  <div style="margin-bottom: 16px;">
+    <p style="font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">
+      ▸ Zoom In Development — Instagram & Facebook
+    </p>
+  </div>
+  <div class="sample-grid" style="margin-bottom:48px;">
+
+    <!-- World Cup Trend-jack -->
+    <div class="sample-card">
+      <div class="sample-visual zoom-bg">
+        <div class="caption-preview">
+          <span class="caption-handle">zoom.in.development 🔥🇪🇬</span>
+          مصر اتأهلت للدور الـ32...<br><br>
+          والفرق بين اللي بيتأهل...<br>واللي بيرجع للبيت؟<br><br>
+          خطة صح من الأول.<br><br>
+          مشروعك مش أقل من المنتخب — هو كمان يستاهل فرصته الحقيقية.
+          <div class="caption-hashtags">#FIFAWorldCup #Egypt #DigitalMarketing #zoom_in_development</div>
+        </div>
+      </div>
+      <div class="sample-info">
+        <div class="sample-brand">Zoom In Development</div>
+        <div class="sample-type">Trend-jacking — World Cup</div>
+        <div class="sample-platform">Instagram · Emotional Hook</div>
+      </div>
+    </div>
+
+    <!-- Brand Reveal -->
+    <div class="sample-card">
+      <div class="sample-visual zoom-bg">
+        <div class="caption-preview">
+          <span class="caption-handle">zoom.in.development</span>
+          "سناب واحد بس... وكل شي اتغيّر"<br>
+          Zoom In... literally Zoom In 🔥<br><br>
+          هويتنا الجديدة جاهزة، وانطلاقتنا نحو القمة بدأت رسمياً..<br>
+          تابعونا هتشوفوا إزاي بنبني البراندات من الصفر ⬇️
+          <div class="caption-hashtags">#zoom_in #digital_marketing #marketing_agency</div>
+        </div>
+      </div>
+      <div class="sample-info">
+        <div class="sample-brand">Zoom In Development</div>
+        <div class="sample-type">Brand Identity Reveal — Reel</div>
+        <div class="sample-platform">Instagram · Storytelling</div>
+      </div>
+    </div>
+
+    <!-- Vision.Growth.Impact -->
+    <div class="sample-card">
+      <div class="sample-visual zoom-bg">
+        <div class="caption-preview">
+          <span class="caption-handle">zoom.in.development 👀</span>
+          هو ده اللي السوق كان محتاجه.<br><br>
+          مش مجرد Marketing Agency —<br>
+          Zoom In Development جت عشان تغير الطريقة اللي بيتعرف بيها الناس على بيزنسك<br><br>
+          Vision. Growth. Impact.<br><br>
+          مش كلام — ده وعد. 🎯
+          <div class="caption-hashtags">#zoom_in_development #zoom_in #digital_marketing</div>
+        </div>
+      </div>
+      <div class="sample-info">
+        <div class="sample-brand">Zoom In Development</div>
+        <div class="sample-type">Brand Positioning Caption</div>
+        <div class="sample-platform">Instagram & Facebook · Jun 14</div>
+      </div>
+    </div>
+
+    <!-- OFF → ON -->
+    <div class="sample-card">
+      <div class="sample-visual zoom-bg">
+        <div class="caption-preview">
+          <span class="caption-handle">zoom.in.development</span>
+          مشروعك لسه OFF!<br>
+          حوّله لـ ON معانا في Zoom in!<br><br>
+          كل خدمات التسويق الرقمي، صناعة المحتوى بالذكاء الاصطناعي، تطوير المواقع، وتوليد العملاء المحتملين في مكان واحد.<br><br>
+          يلا بينا ننجح سوا! كلمنا دلوقتي.
+          <div class="caption-hashtags">#zoom_in_development #digital_marketing #marketing_agency</div>
+        </div>
+      </div>
+      <div class="sample-info">
+        <div class="sample-brand">Zoom In Development</div>
+        <div class="sample-type">Services Promo Caption</div>
+        <div class="sample-platform">Instagram · CTA-focused</div>
+      </div>
+    </div>
+
+    <!-- 4 Digital Strategies -->
+    <div class="sample-card">
+      <div class="sample-visual zoom-bg">
+        <div class="caption-preview">
+          <span class="caption-handle">zoom.in.development 🚀</span>
+          مستعد توصل البيزنس بتاعك للمستوى اللي بعده؟<br><br>
+          لو مش بتستخدم استراتيجيات التسويق الرقمي الأربعة دول، فأنت غالبًا بتسيب فرص ومبيعات كتيييير!<br><br>
+          1️⃣ تسويق المحتوى &nbsp; 2️⃣ السوشيال ميديا<br>
+          3️⃣ التسويق عبر البريد الإلكتروني &nbsp; 4️⃣ SEO<br><br>
+          إيه أكتر واحدة فيهم بتلاقيها صعبة؟ 👇
+          <div class="caption-hashtags">#zoom_in_development #website #digital_marketing</div>
+        </div>
+      </div>
+      <div class="sample-info">
+        <div class="sample-brand">Zoom In Development</div>
+        <div class="sample-type">Educational Post — 4 Strategies</div>
+        <div class="sample-platform">Instagram · Engagement-driven</div>
+      </div>
+    </div>
+
+    <!-- Facebook — Egypt World Cup -->
+    <div class="sample-card">
+      <div class="sample-visual zoom-bg" style="background:linear-gradient(135deg,#13103a 0%,#1e1660 100%);">
+        <div class="caption-preview">
+          <span class="caption-handle">Zoom In Development — Facebook 🇪🇬</span>
+          ...المنتخب المصري وصل إلى دور الـ32<br><br>
+          وأنت لسه مستني إيه؟<br><br>
+          اللي وصل مش بالحظ...<br>وصل بخطة واضحة، واستعداد، وفريق عارف هو بيعمل إيه.<br><br>
+          لو عايز مشروعك يكبر، لازم تبدأ بخطة تسويقية صح.<br>
+          🎯 احصل على استشارة مجانية ودعنا نساعدك توصل.
+          <div class="caption-hashtags">#ZoomIn #DigitalMarketing #Egypt #BusinessDevelopment</div>
+        </div>
+      </div>
+      <div class="sample-info">
+        <div class="sample-brand">Zoom In Development</div>
+        <div class="sample-type">Facebook — Trend-jacking + CTA</div>
+        <div class="sample-platform">Facebook · Storytelling + Emotional</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LUNARA SUBSECTION -->
+  <div style="margin-bottom: 16px;">
+    <p style="font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:24px;">
+      ▸ Lunara Skin Care — @lun_araskin
+    </p>
+  </div>
+  <div class="sample-grid">
+
+    <!-- Hook: Why Dull Skin -->
+    <div class="sample-card">
+      <div class="sample-visual dark-bg">
+        <div class="caption-preview">
+          <span class="caption-handle">lun_araskin 👀</span>
+          ليه بشرتك باهتة رغم إنك بتهتمي بيها؟<br>ممكن تعملي كل حاجة صح...<br>
+          غسول + كريم + روتين<br>وبرضه مفيش Glow 😕<br><br>
+          السبب؟ إنك مش بتدي بشرتك اللي هي محتاجاه فعلًا ⬇️<br>
+          ✨ ترطيب كفاية &nbsp; ✨ روتين مناسب &nbsp; ✨ استمرارية
+          <div class="caption-hashtags">#بشره #skincare #selfcare #selflove</div>
+        </div>
+      </div>
+      <div class="sample-info">
+        <div class="sample-brand">Lunara Skin Care</div>
+        <div class="sample-type">Hook Caption — Problem/Solution</div>
+        <div class="sample-platform">Instagram · High-save format</div>
+      </div>
+    </div>
+
+    <!-- Budget Tips -->
+    <div class="sample-card">
+      <div class="sample-visual dark-bg">
+        <div class="caption-preview">
+          <span class="caption-handle">lun_araskin 🤍</span>
+          بشرتك مش محتاجة ميزانية كبيرة<br>
+          جبتلك 5 tips هتفرق معاكِ فعلًا من أول أسبوع ⬇️<br><br>
+          💧 المويه = أرخص سيروم في السوق<br>
+          ☀️ الأهم step مش رفاهية، هو الـ SPF<br>
+          ⚠️ الغسيل مرتين بس — مش أكتر<br>
+          🤝 المرطب ده الـ BFF بتاعك<br>
+          😴 النوم الكافي = سيشن سكين كير مجاني
+          <div class="caption-hashtags">#selflove #skincare #beautiful</div>
+        </div>
+      </div>
+      <div class="sample-info">
+        <div class="sample-brand">Lunara Skin Care</div>
+        <div class="sample-type">Educational — Budget Tips</div>
+        <div class="sample-platform">Instagram · Save-worthy</div>
+      </div>
+    </div>
+
+    <!-- Glowe EN Copy -->
+    <div class="sample-card">
+      <div class="sample-visual dark-bg" style="background:#0f0d1c; text-align:center; direction:ltr;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.05rem; line-height:1.8; color:var(--accent2);">
+          Simple skincare.<br>Real glow.<br>
+          <span style="font-family:'Inter',sans-serif; font-size:0.72rem; color:var(--muted); margin-top:10px; display:block; letter-spacing:0.06em;">Because your skin deserves to breathe.</span>
+          <span style="font-family:'Inter',sans-serif; font-size:0.7rem; color:var(--muted); display:block; margin-top:4px;">Welcome to your glow journey.</span>
+        </div>
+      </div>
+      <div class="sample-info">
+        <div class="sample-brand">Glowe — Sample Project</div>
+        <div class="sample-type">Brand Tagline & English Copywriting</div>
+        <div class="sample-platform">English · Multi-platform</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REEL IDEAS -->
+<section id="reels">
+  <p class="section-label">Content Strategy</p>
+  <h2 class="section-title">Reel Concepts</h2>
+  <div class="reel-grid">
+
+    <div class="reel-card">
+      <div class="reel-num">01</div>
+      <div>
+        <div class="reel-hook">❌ "٣ أخطاء بتخلي إعلانك محدش يهتم بيه!"</div>
+        <div class="reel-body">نقد سريع لأكتر الأخطاء اللي الـ brands بتعملها في الكابشن والـ CTA — بأسلوب خفيف وقابل للشير.</div>
+        <span class="reel-cta">CTA: "قولنا إيه الخطأ اللي بتعمله"</span>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-num">02</div>
+      <div>
+        <div class="reel-hook">🔥 "الـ hook ده بيجيب reach والآخر لأ — الفرق في إيه؟"</div>
+        <div class="reel-body">مقارنة مرئية بين hook قوي وضعيف — يعلّم وفي نفس الوقت يثبت الخبرة.</div>
+        <span class="reel-cta">CTA: "Save الفيديو ده عشان ترجعله"</span>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-num">03</div>
+      <div>
+        <div class="reel-hook">💡 "يوم شغل في الـ Agency — ورا الكواليس"</div>
+        <div class="reel-body">Behind-the-scenes من جلسة تصوير أو كتابة كونتنت — يبني الـ trust ويضهّر الـ process.</div>
+        <span class="reel-cta">CTA: "إيه اللي بتتعمل فيه دلوقتي؟"</span>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-num">04</div>
+      <div>
+        <div class="reel-hook">📲 "أنا عملت ٣٠ بوست في شهر — الناتج كان كده"</div>
+        <div class="reel-body">Results reveal بالأرقام الحقيقية — يبني الـ credibility ويحوّل الـ follower لـ client.</div>
+        <span class="reel-cta">CTA: "ابعتلنا رسالة لو عايز نفس النتيجة"</span>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-num">05</div>
+      <div>
+        <div class="reel-hook">🎯 "قبل ما تنزّل أي بوست، اسأل نفسك الأسئلة دي"</div>
+        <div class="reel-body">Checklist سريعة للكونتنت — قابلة للـ save والـ share وبتجيب engagement عالي.</div>
+        <span class="reel-cta">CTA: "Save وانشريها مع أي حد بيعمل كونتنت"</span>
+      </div>
+    </div>
+
+    <div class="reel-card">
+      <div class="reel-num">06</div>
+      <div>
+        <div class="reel-hook">✨ "إزاي بشرتك تبقى زجاجية من غير ما تصرفي فلوس"</div>
+        <div class="reel-body">تيب مجاني + hook قوي = أكتر فيديو في الـ skincare بيتشير — يعمل viral بشكل طبيعي.</div>
+        <span class="reel-cta">CTA: "Save وابدئي من النهارده"</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- CONTENT PLAN -->
+<section id="plan">
+  <p class="section-label">Strategy</p>
+  <h2 class="section-title">Weekly Content Plan</h2>
+  <div style="background:var(--surface); border:1px solid var(--border); border-radius:20px; overflow:hidden;">
+    <table class="plan-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Content Type</th>
+          <th>Theme & Goal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day-cell">Sunday</td>
+          <td><span class="type-badge type-reel">Reel</span></td>
+          <td>
+            Week opener — hook-driven, high-energy. Goal: reach & impressions.
+            <div class="plan-goal">Best day for discovery content targeting non-followers.</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="day-cell">Monday</td>
+          <td><span class="type-badge type-carousel">Carousel</span></td>
+          <td>
+            Educational or tips — designed for saves and shares.
+            <div class="plan-goal">Build expertise positioning + save-worthy content.</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="day-cell">Tuesday</td>
+          <td><span class="type-badge type-story">Story</span></td>
+          <td>
+            Poll, question box, or behind-the-scenes teaser.
+            <div class="plan-goal">Boost daily engagement and warm up audience mid-week.</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="day-cell">Wednesday</td>
+          <td><span class="type-badge type-offer">Offer / Promo</span></td>
+          <td>
+            Service or product spotlight — value-focused, not hard-sell.
+            <div class="plan-goal">Convert warm audience into leads or inquiries.</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="day-cell">Thursday</td>
+          <td><span class="type-badge type-edu">Educational Post</span></td>
+          <td>
+            Myth vs. fact, checklist, or deep-dive on one topic.
+            <div class="plan-goal">Establish authority; generate comments + saves.</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="day-cell">Friday</td>
+          <td><span class="type-badge type-bts">Behind the Scenes</span></td>
+          <td>
+            Team, process, or day-in-the-life content.
+            <div class="plan-goal">Build trust and human connection with the brand.</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="day-cell">Saturday</td>
+          <td><span class="type-badge type-eng">Engagement Post</span></td>
+          <td>
+            "This or that", fill-in-the-blank, or community question.
+            <div class="plan-goal">Maximize comments + algorithm signal heading into next week.</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOOLS -->
+<section id="tools">
+  <p class="section-label">My Stack</p>
+  <h2 class="section-title">Tools I Use</h2>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(0,180,255,0.1); font-size:1.5rem;">🎨</div>
+      <div>
+        <div class="tool-name">Canva</div>
+        <div class="tool-use">Design, carousels, brand assets</div>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(255,60,60,0.1);">🎬</div>
+      <div>
+        <div class="tool-name">CapCut</div>
+        <div class="tool-use">Short-form video editing & Reels</div>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(0,120,255,0.1);">📊</div>
+      <div>
+        <div class="tool-name">Meta Business Suite</div>
+        <div class="tool-use">Scheduling, ads, analytics</div>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(100,255,100,0.1);">🤖</div>
+      <div>
+        <div class="tool-name">ChatGPT / Claude</div>
+        <div class="tool-use">Research, ideation, copy refinement</div>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(255,200,0,0.1);">📁</div>
+      <div>
+        <div class="tool-name">Google Drive</div>
+        <div class="tool-use">Content planning & collaboration</div>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:rgba(176,143,255,0.1);">📋</div>
+      <div>
+        <div class="tool-name">Microsoft Office</div>
+        <div class="tool-use">Reports, strategy docs, presentations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- CTA / CONTACT -->
+<div id="contact">
+  <div class="inner">
+    <p class="cta-label">Let's Work Together</p>
+    <h2 class="cta-title">Ready to grow your social media?</h2>
+    <p class="cta-sub">I'm available for freelance projects, full-time roles, and creative collaborations. Let's build something people actually want to share.</p>
+    <div class="cta-contacts">
+      <a href="mailto:darwa0646@gmail.com" class="cta-btn primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Send me an email
+      </a>
+      <a href="https://www.linkedin.com/in/arwa-gamal" target="_blank" class="cta-btn secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        Connect on LinkedIn
+      </a>
+      <a href="tel:01274037312" class="cta-btn secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        01274037312
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2025 Arwa Gamal — Social Media Specialist</span>
+  <span>darwa0646@gmail.com</span>
+</footer>
+
+</body>
+</html>
